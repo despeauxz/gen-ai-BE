@@ -25,7 +25,10 @@
         "host": {"ENV": "POSTGRES_HOST"},
         "database": {"ENV": "POSTGRES_DATABASE"},
         "port": {"ENV": "POSTGRES_PORT"},
-        "schema": "prod_schema"
+        "schema": "prod_schema",
+        "ssl": {
+            "rejectUnauthorized": false
+        }
     },
     "sql-file" : true
 }
