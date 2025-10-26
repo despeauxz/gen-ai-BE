@@ -14,10 +14,12 @@ import { baseRouter, sessionRouter, experimentsRouter } from "../app/routes/inde
 import { handleCors } from "../app/middleware/cors.middleware";
 import { environments } from "../app/enums";
 import config from ".";
+import path from "path";
 
 
-const logDirectory = "./log";
-const checkLogDir = fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+let accessLogStream = null;
+const isServerless = !!process.env.VERCEL || process.env.NODE_ENV === "production";
+const logDirectory = path.resolve("./log");
 
 const expressConfig = (app) => {
     let accessLogStream, logger;
@@ -37,10 +39,14 @@ const expressConfig = (app) => {
     logger.info("Application starting...");
     logger.debug("Overriding 'Express' logger");
 
-    if (checkLogDir) {
+    if (!isServerless) {
+        if (!fs.existsSync(logDirectory)) {
+            fs.mkdirSync(logDirectory, { recursive: true });
+        }
+
         accessLogStream = FileStreamRotator.getStream({
             date_format: "YYYYMMDD",
-            filename: `${logDirectory}/access-%DATE%.log`,
+            filename: path.join(logDirectory, "access-%DATE%.log"),
             frequency: "weekly",
             verbose: false,
         });
