@@ -1,0 +1,5 @@
+export const ALPHANUMERIC = 'alphanumeric'
+export const ALPHABETIC = 'alphanumeric'
+export const NUMERIC = 'numeric'
+export const HEX = 'hex'
+export const BINARY = 'binary'
