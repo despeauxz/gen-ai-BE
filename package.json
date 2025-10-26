@@ -14,7 +14,7 @@
     "dev": "nodemon --exec babel-node index.js",
     "lint": "eslint --fix app/ --ext .js",
     "precommit": "npm run lint && npm t",
-    "prepare": "db-migrate reset -m ./app/migrations/",
+    "prepare": "db-migrate reset -e production -m ./app/migrations/",
     "migration:create": "db-migrate create --sql-file=true -m ./app/migrations/",
     "migration:up": "db-migrate up -m ./app/migrations/",
     "migration:down": "db-migrate down -c 100 -m ./app/migrations/",
