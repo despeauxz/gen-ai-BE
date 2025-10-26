@@ -25,7 +25,7 @@ const config =  (nodeEnv, envTag) => ({
 	dbPassword: getValue("POSTGRES_PASSWORD"),
 	dbUsername: getValue("POSTGRES_USER"),
 	dbName: getValue("POSTGRES_DATABASE"),
-	dbPort: 5432,
+	dbPort: getValue("POSTGRES_PORT"),
 	dbHost: getValue("POSTGRES_HOST"),
 	dbMaxConnections:  getValue("POSTGRES_MAX_CONNECTIONS"),
 	// app configuration
