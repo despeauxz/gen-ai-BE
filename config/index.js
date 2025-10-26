@@ -22,12 +22,12 @@ const config =  (nodeEnv, envTag) => ({
 	isProduction: nodeEnv === 'production',
 	isTest: nodeEnv === 'test',
 	// DB configuration
-	dbPassword: getValue(`${envTag}_DB_PASSWORD`),
-	dbUsername: getValue(`${envTag}_DB_USER`),
-	dbName: getValue(`${envTag}_DB_NAME`),
-	dbPort: getValue(`${envTag}_DB_PORT`),
-	dbHost: getValue(`${envTag}_DB_HOST`),
-	dbMaxConnections:  getValue(`${envTag}_MAX_CONNECTIONS`),
+	dbPassword: getValue("POSTGRES_PASSWORD"),
+	dbUsername: getValue("POSTGRES_USER"),
+	dbName: getValue("POSTGRES_DATABASE"),
+	dbPort: getValue("POSTGRES_PORT"),
+	dbHost: getValue("POSTGRES_HOST"),
+	dbMaxConnections:  getValue("POSTGRES_MAX_CONNECTIONS"),
 	// app configuration
 	appEnvironment: getValue(`NODE_ENV`),
 });

@@ -9,14 +9,12 @@ import rateLimit from "express-rate-limit";
 import * as FileStreamRotator from "file-stream-rotator";
 import { errorMiddleware } from "../app/middleware/errors.middleware";
 import { validateData } from "../app/middleware/validation.middleware";
-import { envValidator } from "../app/validate/env.validate";
 import loggerInit from "./logger";
 import { baseRouter, sessionRouter, experimentsRouter } from "../app/routes/index";
 import { handleCors } from "../app/middleware/cors.middleware";
 import { environments } from "../app/enums";
 import config from ".";
 
-validateData(envValidator); // TODO: complete env validator
 
 const logDirectory = "./log";
 const checkLogDir = fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
